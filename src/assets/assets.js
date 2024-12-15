@@ -6,7 +6,6 @@ import contact_image from "./contact_image.png";
 import about_image from "./about_image.png";
 import logo from "./slotsync.png";
 
-
 import cross_icon from "./cross_icon.png";
 
 import upload_icon from "./upload_icon.png";
@@ -33,19 +32,21 @@ import General_physician from "./doc3.png";
 import Gynecologist from "./Obstetrician.png";
 import Neurologist from "./doc11.png";
 import Pediatricians from "./Pediatricians.png";
-import slide1 from './slide1.jpg'
-import slide2 from './slide2.jpg'
-import slide3 from './slide3.jpg'
-import slide4 from './slide4.jpg'
-import satyamimg from './satyamimgblack.png'
+import slide1 from "./slide1.jpg";
+import slide2 from "./slide2.jpg";
+import slide3 from "./slide3.jpg";
+import slide4 from "./slide4.jpg";
+import satyamimg from "./satyamimgblack.png";
+import mh from "./mh.png";
+import Insurance from "./Insurance.jpg";
 
 export const assets = {
   appointment_img,
   header_img,
   group_profiles,
   logo,
-
-
+  mh,
+  Insurance,
 
   profile_pic,
 
@@ -96,10 +97,7 @@ export const specialityData = [
   {
     speciality: "Cardiologist",
     image: Neurologist,
-  }
-  
-  
-
+  },
 ];
 
 export const doctors = [
@@ -113,10 +111,11 @@ export const doctors = [
     about:
       "Dr. Arun Kumar is a renowned physician in Sultanpur, specializing in preventive care and holistic health solutions.",
     fees: 300,
+    contact: "9876543210",
     address: {
       line1: "Civil Lines",
-      line2: "Near District Hospital, Sultanpur",
-    },
+      line2: "Near District Hospital, Sultanpur"
+    }
   },
   {
     _id: "doc2",
@@ -128,10 +127,11 @@ export const doctors = [
     about:
       "Dr. Priya Singh provides expert gynecological care and counseling for women in Sultanpur.",
     fees: 400,
+    contact: "9876543211",
     address: {
       line1: "Amhat Road",
-      line2: "Opposite City Mall, Sultanpur",
-    },
+      line2: "Opposite City Mall, Sultanpur"
+    }
   },
   {
     _id: "doc3",
@@ -143,10 +143,11 @@ export const doctors = [
     about:
       "Dr. Rajesh Verma is a trusted dermatologist treating skin conditions with precision and care.",
     fees: 350,
+    contact: "9876543212",
     address: {
       line1: "Lal Diggi",
-      line2: "Near SBI Branch, Sultanpur",
-    },
+      line2: "Near SBI Branch, Sultanpur"
+    }
   },
   {
     _id: "doc4",
@@ -158,10 +159,11 @@ export const doctors = [
     about:
       "Dr. Kavita Sharma is dedicated to providing comprehensive healthcare for children in Sultanpur.",
     fees: 300,
+    contact: "9876543213",
     address: {
       line1: "Chowk",
-      line2: "Near Saraswati Vidya Mandir, Sultanpur",
-    },
+      line2: "Near Saraswati Vidya Mandir, Sultanpur"
+    }
   },
   {
     _id: "doc5",
@@ -173,10 +175,11 @@ export const doctors = [
     about:
       "Dr. Anil Tiwari specializes in neurological disorders, providing advanced care and treatment.",
     fees: 500,
+    contact: "9876543214",
     address: {
       line1: "Bara Road",
-      line2: "Near Ram Hospital, Sultanpur",
-    },
+      line2: "Near Ram Hospital, Sultanpur"
+    }
   },
   {
     _id: "doc6",
@@ -188,10 +191,11 @@ export const doctors = [
     about:
       "Dr. Sneha Gupta is an expert in diagnosing and treating ear, nose, and throat conditions.",
     fees: 250,
+    contact: "9876543215",
     address: {
       line1: "Vikas Nagar",
-      line2: "Opposite PVR Complex, Sultanpur",
-    },
+      line2: "Opposite PVR Complex, Sultanpur"
+    }
   },
   {
     _id: "doc31",
@@ -203,10 +207,11 @@ export const doctors = [
     about:
       "Dr. Arun Kumar is a renowned physician in Sultanpur, specializing in preventive care and holistic health solutions.",
     fees: 300,
+    contact: "9876543216",
     address: {
       line1: "Civil Lines",
-      line2: "Near District Hospital, Sultanpur",
-    },
+      line2: "Near District Hospital, Sultanpur"
+    }
   },
   {
     _id: "doc32",
@@ -218,10 +223,11 @@ export const doctors = [
     about:
       "Dr. Priya Singh provides expert gynecological care and counseling for women in Sultanpur.",
     fees: 400,
+    contact: "9876543217",
     address: {
       line1: "Amhat Road",
-      line2: "Opposite City Mall, Sultanpur",
-    },
+      line2: "Opposite City Mall, Sultanpur"
+    }
   },
   {
     _id: "doc33",
@@ -233,11 +239,14 @@ export const doctors = [
     about:
       "Dr. Rajesh Verma is a trusted dermatologist treating skin conditions with precision and care.",
     fees: 350,
+    contact: "9876543218",
     address: {
       line1: "Lal Diggi",
-      line2: "Near SBI Branch, Sultanpur",
-    },
+      line2: "Near SBI Branch, Sultanpur"
+    }
   },
+
+
   {
     _id: "doc34",
     name: "Dr. Kavita Sharma",
@@ -248,10 +257,11 @@ export const doctors = [
     about:
       "Dr. Kavita Sharma is dedicated to providing comprehensive healthcare for children in Sultanpur.",
     fees: 300,
+    contact: "9876543219",
     address: {
       line1: "Chowk",
-      line2: "Near Saraswati Vidya Mandir, Sultanpur",
-    },
+      line2: "Near Saraswati Vidya Mandir, Sultanpur"
+    }
   },
   {
     _id: "doc35",
@@ -263,10 +273,11 @@ export const doctors = [
     about:
       "Dr. Anil Tiwari specializes in neurological disorders, providing advanced care and treatment.",
     fees: 500,
+    contact: "9876543220",
     address: {
       line1: "Bara Road",
-      line2: "Near Ram Hospital, Sultanpur",
-    },
+      line2: "Near Ram Hospital, Sultanpur"
+    }
   },
   {
     _id: "doc36",
@@ -278,10 +289,11 @@ export const doctors = [
     about:
       "Dr. Sneha Gupta is an expert in diagnosing and treating ear, nose, and throat conditions.",
     fees: 250,
+    contact: "9876543221",
     address: {
       line1: "Vikas Nagar",
-      line2: "Opposite PVR Complex, Sultanpur",
-    },
+      line2: "Opposite PVR Complex, Sultanpur"
+    }
   },
   {
     _id: "doc16",
@@ -293,10 +305,11 @@ export const doctors = [
     about:
       "Dr. Amit Yadav is committed to offering comprehensive healthcare services in Sultanpur.",
     fees: 350,
+    contact: "9876543222",
     address: {
       line1: "Station Road",
-      line2: "Sultanpur, Uttar Pradesh",
-    },
+      line2: "Sultanpur, Uttar Pradesh"
+    }
   },
   {
     _id: "doc17",
@@ -308,10 +321,11 @@ export const doctors = [
     about:
       "Dr. Neelam Tiwari specializes in high-risk pregnancies and women’s health.",
     fees: 450,
+    contact: "9876543223",
     address: {
       line1: "Civil Lines",
-      line2: "Sultanpur, Uttar Pradesh",
-    },
+      line2: "Sultanpur, Uttar Pradesh"
+    }
   },
   {
     _id: "doc18",
@@ -323,10 +337,11 @@ export const doctors = [
     about:
       "Dr. Shubham Gupta is renowned for his expertise in skin care and acne treatments.",
     fees: 400,
+    contact: "9876543224",
     address: {
       line1: "Market Road",
-      line2: "Sultanpur, Uttar Pradesh",
-    },
+      line2: "Sultanpur, Uttar Pradesh"
+    }
   },
   {
     _id: "doc19",
@@ -338,10 +353,11 @@ export const doctors = [
     about:
       "Dr. Suman Mishra provides compassionate care to children and supports their overall health.",
     fees: 250,
+    contact: "9876543225",
     address: {
       line1: "Naya Bazar",
-      line2: "Sultanpur, Uttar Pradesh",
-    },
+      line2: "Sultanpur, Uttar Pradesh"
+    }
   },
   {
     _id: "doc20",
@@ -353,10 +369,11 @@ export const doctors = [
     about:
       "Dr. Ritesh Kumar specializes in joint replacement surgery and treatment of bone fractures.",
     fees: 600,
+    contact: "9876543226",
     address: {
       line1: "Hospital Road",
-      line2: "Sultanpur, Uttar Pradesh",
-    },
+      line2: "Sultanpur, Uttar Pradesh"
+    }
   },
   {
     _id: "doc21",
@@ -368,10 +385,11 @@ export const doctors = [
     about:
       "Dr. Simran Yadav provides expert neurological treatments for various disorders.",
     fees: 750,
+    contact: "9876543227",
     address: {
       line1: "Kacheri Road",
-      line2: "Sultanpur, Uttar Pradesh",
-    },
+      line2: "Sultanpur, Uttar Pradesh"
+    }
   },
   {
     _id: "doc22",
@@ -383,6 +401,7 @@ export const doctors = [
     about:
       "Dr. Nitin Verma is a skilled ENT specialist helping patients with ear, nose, and throat problems.",
     fees: 300,
+    contact: "9876543228",
     address: {
       line1: "Subhash Nagar",
       line2: "Sultanpur, Uttar Pradesh",
@@ -398,6 +417,7 @@ export const doctors = [
     about:
       "Dr. Harshita Singh is an expert in diagnosing and treating heart diseases.",
     fees: 900,
+    contact: "9876543229",
     address: {
       line1: "Rajendra Nagar",
       line2: "Sultanpur, Uttar Pradesh",
@@ -413,6 +433,7 @@ export const doctors = [
     about:
       "Dr. Aditya Prasad provides personalized healthcare solutions for everyday health issues.",
     fees: 200,
+    contact: "9876543230",
     address: {
       line1: "City Center",
       line2: "Sultanpur, Uttar Pradesh",
@@ -428,6 +449,7 @@ export const doctors = [
     about:
       "Dr. Priya Kumari specializes in pregnancy care, infertility treatments, and women’s health.",
     fees: 500,
+    contact: "9876543231",
     address: {
       line1: "New Colony",
       line2: "Sultanpur, Uttar Pradesh",
@@ -443,6 +465,7 @@ export const doctors = [
     about:
       "Dr. Gaurav Yadav is known for his expertise in treating heart diseases and offering preventive care.",
     fees: 1000,
+    contact: "9876543232",
     address: {
       line1: "M.G. Road",
       line2: "Sultanpur, Uttar Pradesh",
@@ -458,6 +481,7 @@ export const doctors = [
     about:
       "Dr. Rupal Verma offers dental treatments, including cleaning, filling, and root canal therapy.",
     fees: 300,
+    contact: "9876543233",
     address: {
       line1: "Durgapuri",
       line2: "Sultanpur, Uttar Pradesh",
@@ -473,6 +497,7 @@ export const doctors = [
     about:
       "Dr. Poonam Kumar specializes in kidney care, urinary tract disorders, and male infertility.",
     fees: 550,
+    contact: "9876543234",
     address: {
       line1: "Chakranpur",
       line2: "Sultanpur, Uttar Pradesh",
@@ -488,6 +513,7 @@ export const doctors = [
     about:
       "Dr. Rajesh Mishra provides psychological counseling and psychiatric treatment.",
     fees: 650,
+    contact: "9876543235",
     address: {
       line1: "Sadar Bazaar",
       line2: "Sultanpur, Uttar Pradesh",
@@ -503,11 +529,13 @@ export const doctors = [
     about:
       "Dr. Shalini Singh provides advanced treatments for orthopedic problems, including fractures and joint pain.",
     fees: 500,
+    contact: "9876543236",
     address: {
       line1: "Sarojini Nagar",
       line2: "Sultanpur, Uttar Pradesh",
     },
   },
+  
   {
     _id: "doc40",
     name: "Dr. Rajesh Kumar",
@@ -515,13 +543,13 @@ export const doctors = [
     speciality: "General Physician",
     degree: "MBBS",
     experience: "6 Years",
-    about:
-      "Dr. Rajesh Kumar specializes in providing preventive care and early diagnosis to his patients.",
+    about: "Dr. Rajesh Kumar specializes in providing preventive care and early diagnosis to his patients.",
     fees: 300,
     address: {
       line1: "Station Road",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543210"
   },
   {
     _id: "doc41",
@@ -530,13 +558,13 @@ export const doctors = [
     speciality: "General Physician",
     degree: "MBBS",
     experience: "3 Years",
-    about:
-      "Dr. Sameer Khan offers personalized care for general health concerns.",
+    about: "Dr. Sameer Khan offers personalized care for general health concerns.",
     fees: 250,
     address: {
       line1: "City Center",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543211"
   },
   {
     _id: "doc42",
@@ -545,13 +573,13 @@ export const doctors = [
     speciality: "General Physician",
     degree: "MBBS",
     experience: "5 Years",
-    about:
-      "Dr. Priya Tiwari is dedicated to ensuring her patients receive the best healthcare services.",
+    about: "Dr. Priya Tiwari is dedicated to ensuring her patients receive the best healthcare services.",
     fees: 280,
     address: {
       line1: "Hospital Road",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543212"
   },
   {
     _id: "doc43",
@@ -560,13 +588,13 @@ export const doctors = [
     speciality: "Gynecologist",
     degree: "MBBS, MD",
     experience: "8 Years",
-    about:
-      "Dr. Priya Sharma is known for her compassionate care and expertise in gynecology.",
+    about: "Dr. Priya Sharma is known for her compassionate care and expertise in gynecology.",
     fees: 400,
     address: {
       line1: "Civil Lines",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543213"
   },
   {
     _id: "doc44",
@@ -581,6 +609,7 @@ export const doctors = [
       line1: "New Colony",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543214"
   },
   {
     _id: "doc45",
@@ -589,13 +618,13 @@ export const doctors = [
     speciality: "Gynecologist",
     degree: "MBBS, MD",
     experience: "10 Years",
-    about:
-      "Dr. Anjali Desai is highly experienced in dealing with complex gynecological conditions.",
+    about: "Dr. Anjali Desai is highly experienced in dealing with complex gynecological conditions.",
     fees: 450,
     address: {
       line1: "Market Area",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543215"
   },
   {
     _id: "doc46",
@@ -604,13 +633,13 @@ export const doctors = [
     speciality: "Dermatologist",
     degree: "MBBS, DDVL",
     experience: "5 Years",
-    about:
-      "Dr. Arvind Mishra provides expert treatment for skin and hair-related issues.",
+    about: "Dr. Arvind Mishra provides expert treatment for skin and hair-related issues.",
     fees: 350,
     address: {
       line1: "Chowk Area",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543216"
   },
   {
     _id: "doc47",
@@ -619,13 +648,13 @@ export const doctors = [
     speciality: "Dermatologist",
     degree: "MBBS, DDVL",
     experience: "4 Years",
-    about:
-      "Dr. Neha Kapoor offers advanced solutions for all skin-related problems.",
+    about: "Dr. Neha Kapoor offers advanced solutions for all skin-related problems.",
     fees: 320,
     address: {
       line1: "City Mall Road",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543217"
   },
   {
     _id: "doc48",
@@ -634,13 +663,13 @@ export const doctors = [
     speciality: "Dermatologist",
     degree: "MBBS, DDVL",
     experience: "6 Years",
-    about:
-      "Dr. Kavita Sen has extensive experience in treating dermatological disorders.",
+    about: "Dr. Kavita Sen has extensive experience in treating dermatological disorders.",
     fees: 400,
     address: {
       line1: "Rajendra Nagar",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543218"
   },
   {
     _id: "doc69",
@@ -655,6 +684,7 @@ export const doctors = [
       line1: "Market Road",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543219"
   },
   {
     _id: "doc60",
@@ -663,13 +693,13 @@ export const doctors = [
     speciality: "Pediatrician",
     degree: "MBBS, MD (Pediatrics)",
     experience: "6 Years",
-    about:
-      "Dr. Ramesh Verma is dedicated to providing comprehensive care for children.",
+    about: "Dr. Ramesh Verma is dedicated to providing comprehensive care for children.",
     fees: 300,
     address: {
       line1: "Hospital Road",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543220"
   },
   {
     _id: "doc61",
@@ -678,13 +708,13 @@ export const doctors = [
     speciality: "Pediatrician",
     degree: "MBBS, DCH",
     experience: "5 Years",
-    about:
-      "Dr. Sneha Dixit is highly skilled in pediatric care and ensures children receive the best treatment.",
+    about: "Dr. Sneha Dixit is highly skilled in pediatric care and ensures children receive the best treatment.",
     fees: 280,
     address: {
       line1: "Civil Lines",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543221"
   },
   {
     _id: "doc52",
@@ -699,6 +729,7 @@ export const doctors = [
       line1: "Main Square",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543222"
   },
   {
     _id: "doc53",
@@ -707,13 +738,13 @@ export const doctors = [
     speciality: "Neurologist",
     degree: "MBBS, DM (Neurology)",
     experience: "10 Years",
-    about:
-      "Dr. Anil Malhotra is known for his expertise in treating complex neurological issues.",
+    about: "Dr. Anil Malhotra is known for his expertise in treating complex neurological issues.",
     fees: 650,
     address: {
       line1: "City Plaza",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543223"
   },
   {
     _id: "doc54",
@@ -722,13 +753,13 @@ export const doctors = [
     speciality: "Neurologist",
     degree: "MBBS, DM (Neurology)",
     experience: "8 Years",
-    about:
-      "Dr. Preeti Rao ensures her patients receive personalized neurological care.",
+    about: "Dr. Preeti Rao ensures her patients receive personalized neurological care.",
     fees: 620,
     address: {
       line1: "Chowk Area",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543224"
   },
   {
     _id: "doc55",
@@ -737,13 +768,13 @@ export const doctors = [
     speciality: "Gastroenterologist",
     degree: "MBBS, DM (Gastro)",
     experience: "10 Years",
-    about:
-      "Dr. Rahul Agarwal provides advanced treatment for digestive system disorders.",
+    about: "Dr. Rahul Agarwal provides advanced treatment for digestive system disorders.",
     fees: 800,
     address: {
       line1: "Civil Lines",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543225"
   },
   {
     _id: "doc56",
@@ -752,13 +783,13 @@ export const doctors = [
     speciality: "Gastroenterologist",
     degree: "MBBS, DM (Gastro)",
     experience: "7 Years",
-    about:
-      "Dr. Pooja Saxena specializes in diagnosing and treating gastrointestinal diseases.",
+    about: "Dr. Pooja Saxena specializes in diagnosing and treating gastrointestinal diseases.",
     fees: 750,
     address: {
       line1: "Market Area",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543226"
   },
   {
     _id: "doc57",
@@ -767,44 +798,14 @@ export const doctors = [
     speciality: "Gastroenterologist",
     degree: "MBBS, DM (Gastro)",
     experience: "9 Years",
-    about:
-      "Dr. Akshay Gupta is known for his expertise in endoscopic procedures and digestive care.",
+    about: "Dr. Akshay Gupta is known for his expertise in endoscopic procedures and digestive care.",
     fees: 780,
     address: {
       line1: "Station Road",
       line2: "Sultanpur, Uttar Pradesh",
     },
-  },
-  {
-    _id: "doc50",
-    name: "Dr. Rajesh Kumar",
-    image: doc1,
-    speciality: "General physician",
-    degree: "MBBS",
-    experience: "6 Years",
-    about:
-      "Dr. Rajesh Kumar specializes in providing preventive care and early diagnosis to his patients in Sultanpur.",
-    fees: 300,
-    address: {
-      line1: "Station Road",
-      line2: "Sultanpur, Uttar Pradesh",
-    },
-  },
-  {
-    _id: "doc51",
-    name: "Dr. Sameer Khan",
-    image: doc2,
-    speciality: "General physician",
-    degree: "MBBS",
-    experience: "3 Years",
-    about:
-      "Dr. Sameer Khan offers personalized care for general health concerns.",
-    fees: 250,
-    address: {
-      line1: "City Center",
-      line2: "Sultanpur, Uttar Pradesh",
-    },
-  },
+    contact: "9876543227"
+  },  
   {
     _id: "doc52",
     name: "Dr. Priya Tiwari",
@@ -819,6 +820,7 @@ export const doctors = [
       line1: "Hospital Road",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543227"
   },
   {
     _id: "doc53",
@@ -849,6 +851,7 @@ export const doctors = [
       line1: "Chowk Bazaar",
       line2: "Sultanpur, Uttar Pradesh",
     },
+    contact: "9876543227"
   },
 
   {
@@ -900,81 +903,84 @@ export const doctors = [
     contact: "08432432223",
   },
 
-    {
-        _id: 'doc70',
-        name: 'Dr. Priya Sharma',
-        image: 'doc70', // Replace with actual image variable or path
-        speciality: 'Obstetrician and Gynecologist',
-        degree: 'MBBS, MD (Obstetrics & Gynecology)',
-        experience: '10 Years',
-        about: 'Dr. Priya Sharma is dedicated to providing expert care for women during pregnancy and childbirth.',
-        fees: 500,
-        address: {
-            line1: 'Women’s Health Clinic',
-            line2: 'Sultanpur, Uttar Pradesh'
-        },
-        contact: '09123456789'
+  {
+    _id: "doc70",
+    name: "Dr. Priya Sharma",
+    image: "doc70", // Replace with actual image variable or path
+    speciality: "Obstetrician and Gynecologist",
+    degree: "MBBS, MD (Obstetrics & Gynecology)",
+    experience: "10 Years",
+    about:
+      "Dr. Priya Sharma is dedicated to providing expert care for women during pregnancy and childbirth.",
+    fees: 500,
+    address: {
+      line1: "Women’s Health Clinic",
+      line2: "Sultanpur, Uttar Pradesh",
     },
-    {
-        _id: 'doc71',
-        name: 'Dr. Neha Patel',
-        image: 'doc71', // Replace with actual image variable or path
-        speciality: 'Obstetrician and Gynecologist',
-        degree: 'MBBS, MS (Obstetrics & Gynecology)',
-        experience: '8 Years',
-        about: 'Dr. Neha Patel specializes in high-risk pregnancies and ensures the best care for both mother and baby.',
-        fees: 600,
-        address: {
-            line1: 'Sultanpur Women’s Hospital',
-            line2: 'Sultanpur, Uttar Pradesh'
-        },
-        contact: '08765432100'
+    contact: "09123456789",
+  },
+  {
+    _id: "doc71",
+    name: "Dr. Neha Patel",
+    image: "doc71", // Replace with actual image variable or path
+    speciality: "Obstetrician and Gynecologist",
+    degree: "MBBS, MS (Obstetrics & Gynecology)",
+    experience: "8 Years",
+    about:
+      "Dr. Neha Patel specializes in high-risk pregnancies and ensures the best care for both mother and baby.",
+    fees: 600,
+    address: {
+      line1: "Sultanpur Women’s Hospital",
+      line2: "Sultanpur, Uttar Pradesh",
     },
-    {
-        _id: 'doc72',
-        name: 'Dr. Aarti Soni',
-        image: 'doc72', // Replace with actual image variable or path
-        speciality: 'Obstetrician and Gynecologist',
-        degree: 'MBBS, DGO',
-        experience: '15 Years',
-        about: 'Dr. Aarti Soni has extensive experience in managing complex pregnancies and gynecological issues.',
-        fees: 700,
-        address: {
-            line1: 'Soni Women’s Care',
-            line2: 'Near Civil Line, Sultanpur'
-        },
-        contact: '09012345678'
+    contact: "08765432100",
+  },
+  {
+    _id: "doc72",
+    name: "Dr. Aarti Soni",
+    image: "doc72", // Replace with actual image variable or path
+    speciality: "Obstetrician and Gynecologist",
+    degree: "MBBS, DGO",
+    experience: "15 Years",
+    about:
+      "Dr. Aarti Soni has extensive experience in managing complex pregnancies and gynecological issues.",
+    fees: 700,
+    address: {
+      line1: "Soni Women’s Care",
+      line2: "Near Civil Line, Sultanpur",
     },
-    {
-        _id: 'doc73',
-        name: 'Dr. Manisha Dubey',
-        image: 'doc73', // Replace with actual image variable or path
-        speciality: 'Obstetrician and Gynecologist',
-        degree: 'MBBS, MS (Obstetrics & Gynecology)',
-        experience: '12 Years',
-        about: 'Dr. Manisha Dubey provides comprehensive care for women, with a focus on safe pregnancies and childbirth.',
-        fees: 650,
-        address: {
-            line1: 'Mother’s Care Clinic',
-            line2: 'Sultanpur, Uttar Pradesh'
-        },
-        contact: '08567891234'
+    contact: "09012345678",
+  },
+  {
+    _id: "doc73",
+    name: "Dr. Manisha Dubey",
+    image: "doc73", // Replace with actual image variable or path
+    speciality: "Obstetrician and Gynecologist",
+    degree: "MBBS, MS (Obstetrics & Gynecology)",
+    experience: "12 Years",
+    about:
+      "Dr. Manisha Dubey provides comprehensive care for women, with a focus on safe pregnancies and childbirth.",
+    fees: 650,
+    address: {
+      line1: "Mother’s Care Clinic",
+      line2: "Sultanpur, Uttar Pradesh",
     },
-    {
-        _id: 'doc74',
-        name: 'Dr. Ritu Kapoor',
-        image: 'doc74', // Replace with actual image variable or path
-        speciality: 'Obstetrician and Gynecologist',
-        degree: 'MBBS, DNB (Obstetrics & Gynecology)',
-        experience: '9 Years',
-        about: 'Dr. Ritu Kapoor is known for her compassionate approach to maternity care and her expertise in high-risk pregnancies.',
-        fees: 550,
-        address: {
-            line1: 'Kapoor Maternity Hospital',
-            line2: 'Sultanpur, Uttar Pradesh'
-        },
-        contact: '08345678901'
-    }
-
-
+    contact: "08567891234",
+  },
+  {
+    _id: "doc74",
+    name: "Dr. Ritu Kapoor",
+    image: "doc74", // Replace with actual image variable or path
+    speciality: "Obstetrician and Gynecologist",
+    degree: "MBBS, DNB (Obstetrics & Gynecology)",
+    experience: "9 Years",
+    about:
+      "Dr. Ritu Kapoor is known for her compassionate approach to maternity care and her expertise in high-risk pregnancies.",
+    fees: 550,
+    address: {
+      line1: "Kapoor Maternity Hospital",
+      line2: "Sultanpur, Uttar Pradesh",
+    },
+    contact: "08345678901",
+  },
 ];

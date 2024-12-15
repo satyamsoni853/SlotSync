@@ -101,12 +101,14 @@ function Appointment() {
             <p className="text-gray-600 text-lg">
               {DocInfo.degree} - {DocInfo.speciality}
             </p>
+
             <p className="text-gray-500 text-sm">
               {DocInfo.experience} of experience
             </p>
             {/* <p>{DocInfo.verified_icon.svg}</p> */}
           </div>
         </div>
+      
 
         {/* About Doctor Section */}
         <div className="mt-6">
@@ -122,7 +124,24 @@ function Appointment() {
           <span className="text-xl font-bold text-primary">
             {CurrencySymbol}
             {DocInfo.fees}
+          </span>
+        </div>
+        <div className="mt-6 flex items-center justify-between">
+          <span className="text-xl font-semibold text-gray-800">
+            Doctor Address
+          </span>
+          <span className="text-xl font-bold text-primary">
             
+          {DocInfo.address?.line1}-{DocInfo.address?.line2}
+          </span>
+        </div>
+        <div className="mt-6 flex items-center justify-between">
+          <span className="text-xl font-semibold text-gray-800">
+            Doctor Number
+          </span>
+          <span className="text-xl font-bold text-primary">
+            
+          {DocInfo.contact}
           </span>
         </div>
       </div>

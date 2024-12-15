@@ -4,6 +4,7 @@ import Header from '../Componets/Header'
 import Specilitymenu from '../Componets/Specilitymenu'
 import TopDoctor from '../Componets/TopDoctor'
 import Banner from '../Componets/Banner'
+import Banner2 from '../Componets/Banner2'
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       <Specilitymenu/>
       <TopDoctor/>
       <Banner/>
+      <Banner2/>
       
     </div>
   )

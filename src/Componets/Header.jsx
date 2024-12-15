@@ -12,24 +12,22 @@ function Header() {
       {/* Header Content */}
       <div className="flex flex-col md:flex-row bg-primary rounded-lg p-6 md:px-12 lg:px-16 mt-6 shadow-lg">
         {/* Text Section */}
-        <div className="md:w-1/2 flex flex-col items-start justify-center gap-6 py-6 md:py-[8vw] text-center md:text-left">
+        <div className="md:w-1/2 flex flex-col items-start justify-center gap-6 py-6 md:py-[8vw] text-center md:text-left relative z-10">
           <h1 className="text-2xl md:text-3xl lg:text-4xl text-white font-bold leading-tight">
             Book Appointment <br /> With Your Nearest Doctor
           </h1>
-          <div className="flex flex-col md:flex-row items-center gap-4 text-white text-sm font-light">
-            <img
-              className="w-16 md:w-20"
-              src={assets.group_profiles}
-              alt="doctor profiles"
-            />
-            <p>Simply Find The Best Doctor For Your Problem</p>
-          </div>
+
+          <p className="text-white text-sm md:text-base max-w-md mx-auto md:mx-0">
+            Find the right doctor based on your needs and book your appointment
+            in just a few clicks.
+          </p>
+{/* 
           <a
             className="flex items-center justify-center gap-3 bg-white px-6 py-3 rounded-full text-gray-700 text-sm font-medium hover:bg-gray-100 hover:scale-105 transition-transform duration-300 shadow-md"
             href="#specialty"
           >
             Book Appointment
-          </a>
+          </a> */}
         </div>
 
         {/* Image Section */}

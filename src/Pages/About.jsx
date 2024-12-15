@@ -38,7 +38,7 @@ function About() {
             <div className="bg-white p-6 rounded-lg shadow-md w-full sm:w-1/2 md:w-1/3">
               <img
                 className="w-32 h-32 rounded-full mx-auto"
-                src="https://via.placeholder.com/150"
+                src={assets.mh}
                 alt="Team Member"
               />
               <h3 className="text-xl font-bold text-center mt-4">Mahtab Husain</h3>
