@@ -1,14 +1,7 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import { assets } from "../assets/assets";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import './Aichat.css';
 
-function Navbar() {
-  const Navigate = useNavigate();
-  const [Showmenu, setShowmenu] = useState(false); // State to control menu visibility
-  const [Token, setToken] = useState(true);
-  const [showChat, setShowChat] = useState(false); // State to toggle AI chat visibility
+function Aichat() {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [stage, setStage] = useState('name'); // 'name', 'age', 'chat'
@@ -17,25 +10,6 @@ function Navbar() {
     { sender: 'ai', message: 'Hey, I am SlotSync AI! Tell me your name.' },
   ]);
 
-  // Toggle the dropdown menu visibility on click
-  const toggleMenu = () => {
-    setShowmenu(!Showmenu);
-  };
-
-  // Toggle AI chat visibility
-  const toggleChat = () => {
-    setShowChat(!showChat);
-    if (!showChat) {
-      // Reset chat state when opening
-      setName('');
-      setAge('');
-      setStage('name');
-      setSelectedQuestion('');
-      setChatHistory([{ sender: 'ai', message: 'Hey, I am SlotSync AI! Tell me your name.' }]);
-    }
-  };
-
-  // AI Chat Questions and Answers
   const questionsAndAnswers = [
     { question: 'How do I book a doctor’s appointment?', answer: `Log in to your account, ${name}, go to the booking section, search for a doctor by specialization or location, select an available time slot, and confirm your appointment. You’ll receive a confirmation email or notification.` },
     { question: 'Can I book an appointment for today?', answer: `Yes, ${name}, if a doctor has available slots today, you can book them. Check the doctor’s calendar in the booking section for real-time availability.` },
@@ -89,7 +63,6 @@ function Navbar() {
     { question: 'What if I need help navigating the app?', answer: `Use the in-app help center for tutorials, ${name}, or contact support for personalized assistance.` },
   ];
 
-  // Handle name submission
   const handleNameSubmit = (e) => {
     e.preventDefault();
     if (!name.trim()) {
@@ -104,7 +77,6 @@ function Navbar() {
     setStage('age');
   };
 
-  // Handle age submission
   const handleAgeSubmit = (e) => {
     e.preventDefault();
     if (!age || age < 1 || age > 120) {
@@ -115,7 +87,6 @@ function Navbar() {
     setStage('chat');
   };
 
-  // Handle question submission
   const handleQuestionSubmit = (e) => {
     e.preventDefault();
     if (!selectedQuestion) return;
@@ -131,111 +102,11 @@ function Navbar() {
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-gray-300 px-4 lg:px-8">
-        {/* Logo */}
-        <img
-          onClick={() => Navigate("/home")}
-          className="w-32 md:w-44 cursor-pointer"
-          src={assets.logo}
-          alt="Logo"
-        />
-
-        {/* Nav Links */}
-        <ul className="hidden md:flex items-center gap-8 font-medium text-gray-700">
-          {["/home", "/doctor", "/about", "/contact"].map((path, index) => (
-            <NavLink
-              to={path}
-              key={index}
-              className={({ isActive }) =>
-                `py-1 ${
-                  isActive
-                    ? "text-primary border-b-2 border-primary"
-                    : "hover:text-primary"
-                }`
-              }
-            >
-              {path === "/home"
-                ? "Home"
-                : path.slice(1, 2).toUpperCase() + path.slice(2)}
-            </NavLink>
-          ))}
-        </ul>
-
-        {/* User Section */}
-        <div className="flex items-center gap-4">
-          {Token ? (
-            <div className="relative">
-              {/* Profile Icon */}
-              <div
-                onClick={toggleMenu}
-                className="flex items-center gap-2 cursor-pointer"
-              >
-                <img
-                  className="w-8 h-8 rounded-full"
-                  src={assets.profile_pic}
-                  alt="Profile"
-                />
-              </div>
-
-              {/* Dropdown Menu */}
-              {Showmenu && (
-                <div className="absolute right-0 top-12 bg-white shadow-md rounded-lg z-10">
-                  <p
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      Navigate("/MyProfile");
-                    }}
-                    className="hover:text-primary cursor-pointer px-4 py-2"
-                  >
-                    My Profile
-                  </p>
-                  <p
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      Navigate("/MyAppointment");
-                    }}
-                    className="hover:text-primary cursor-pointer px-4 py-2"
-                  >
-                    My Appointment
-                  </p>
-                  <p
-                    onClick={() => setToken(false)}
-                    className="hover:text-primary cursor-pointer px-4 py-2"
-                  >
-                    Logout
-                  </p>
-                </div>
-              )}
-            </div>
-          ) : (
-            <button
-              onClick={() => Navigate("/login")}
-              className="bg-primary text-white px-6 py-2 rounded-full font-light hidden md:block hover:bg-opacity-90 transition-all"
-            >
-              Create Account
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Fixed AI Chat Button */}
-      <div
-        className="fixed bottom-5 right-5 bg-primary text-white py-2 px-6 rounded-full shadow-md cursor-pointer z-20"
-        onClick={toggleChat}
-      >
-        AI Chat
-      </div>
-
-      {/* AI Chat Popup */}
-      {showChat && (
+    <div className="ai-page-container">
+      <h1 className="ai-page-logo">SlotSync</h1>
+      <div className="ai-form-wrapper">
         <div className="ai-chat-container">
-          <div className="ai-chat-header">
-            <h2 className="ai-chat-title">SlotSync AI Chat</h2>
-            <button className="ai-close-button" onClick={toggleChat}>
-              ×
-            </button>
-          </div>
+          <h2 className="ai-chat-title">SlotSync AI Chat</h2>
           <div className="ai-chat-history">
             {chatHistory.map((chat, index) => (
               <div key={index} className="ai-chat-message">
@@ -307,178 +178,9 @@ function Navbar() {
             </form>
           )}
         </div>
-      )}
-
-      {/* Inline AI Chat Styles */}
-      <style>
-        {`
-          /* AI Chat Container */
-          .ai-chat-container {
-            position: fixed;
-            bottom: 70px;
-            right: 20px;
-            width: 400px;
-            max-height: 600px;
-            background: #ffffff;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 30;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-          }
-
-          /* Top-to-Bottom Background Animation */
-          .ai-chat-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 300%;
-            background: linear-gradient(
-              to bottom,
-              transparent 0%,
-              rgba(144, 238, 144, 0.3) 25%,
-              #90ee90 50%,
-              rgba(144, 238, 144, 0.3) 75%,
-              transparent 100%
-            );
-            opacity: 0.5;
-            animation: slideDown 8s linear infinite;
-            z-index: -1;
-            pointer-events: none;
-            will-change: transform;
-          }
-
-          @keyframes slideDown {
-            0% {
-              transform: translateY(-66.67%);
-            }
-            100% {
-              transform: translateY(33.33%);
-            }
-          }
-
-          /* Chat Header */
-          .ai-chat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            background: #f7fafc;
-            border-bottom: 1px solid #e2e8f0;
-          }
-
-          /* Chat Title */
-          .ai-chat-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333333;
-            margin: 0;
-          }
-
-          /* Close Button */
-          .ai-close-button {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: #4a5568;
-          }
-
-          .ai-close-button:hover {
-            color: #90ee90;
-          }
-
-          /* Chat History */
-          .ai-chat-history {
-            flex-grow: 1;
-            max-height: 250px;
-            overflow-y: auto;
-            padding: 1rem;
-            background: #ffffff;
-          }
-
-          /* Chat Messages */
-          .ai-chat-message {
-            margin-bottom: 0.75rem;
-          }
-
-          .ai-user-message {
-            background: #90ee90;
-            color: #ffffff;
-            padding: 0.5rem;
-            border-radius: 0.375rem 0.375rem 0 0.375rem;
-            margin-left: 1rem;
-            text-align: right;
-            max-width: 80%;
-          }
-
-          .ai-bot-message {
-            background: #e2e8f0;
-            color: #333333;
-            padding: 0.5rem;
-            border-radius: 0.375rem 0.375rem 0.375rem 0;
-            margin-right: 1rem;
-            text-align: left;
-            max-width: 80%;
-          }
-
-          /* Form */
-          .ai-form,
-          .ai-question-form {
-            padding: 0 1rem 1rem;
-          }
-
-          /* Form Group */
-          .ai-form-group {
-            margin-bottom: 0.75rem;
-          }
-
-          /* Form Input */
-          .ai-form-input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.375rem;
-            font-size: 0.9rem;
-            color: #333333;
-            transition: border-color 0.2s, box-shadow 0.2s;
-          }
-
-          .ai-form-input:focus {
-            outline: none;
-            border-color: #90ee90;
-            box-shadow: 0 0 0 2px rgba(144, 238, 144, 0.3);
-          }
-
-          .ai-form-input::placeholder {
-            color: #a0aec0;
-          }
-
-          /* Form and Question Buttons */
-          .ai-form-button,
-          .ai-question-button {
-            width: 100%;
-            background: #90ee90;
-            color: #ffffff;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 0.375rem;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-          }
-
-          .ai-form-button:hover,
-          .ai-question-button:hover {
-            background: #77dd77;
-          }
-        `}
-      </style>
+      </div>
     </div>
   );
 }
 
-export default Navbar;
+export default Aichat;

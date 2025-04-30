@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./UserLogin.css";
 import { Link } from "react-router-dom";
+import axios from "axios"; // Import axios
 
 function UserLogin() {
   const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
@@ -20,29 +21,58 @@ function UserLogin() {
   const [signupGender, setSignupGender] = useState("");
 
   // Login form handlers
-  const handleLoginSendOtp = () => {
-    alert("OTP sent to your registered email/phone!");
-    setLoginOtpSent(true);
+  const handleLoginSendOtp = async () => {
+    // Make an API call to send OTP for login
+    try {
+      const response = await axios.post("https://loginslotsync.onrender.com/api/v1/auth/send-login-otp", {
+        email: loginUsername,
+      });
+      console.log("Login OTP Response:", response.data); // Print the response data
+      alert(response.data.message); // Show the response message from API
+      setLoginOtpSent(true);
+    } catch (error) {
+      console.error("Error sending OTP", error);
+      alert("Error sending OTP.");
+    }
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    alert(
-      `Logging in with Username: ${loginUsername}, Password: ${loginPassword}, OTP: ${loginOtp}`
-    );
+    // Make an API call to verify the login credentials
+    try {
+      const response = await axios.post("https://loginslotsync.onrender.com/api/v1/auth/login", {
+        username: loginUsername,
+        password: loginPassword,
+        otp: loginOtp,
+      });
+      console.log("Login Response:", response.data); // Print the response data
+      alert(response.data.message); // Show the response message from API
+    } catch (error) {
+      console.error("Login failed", error);
+      alert("Login failed: " + error.response?.data?.message);
+    }
   };
 
   // Signup form handlers
-  const handleSignupSendOtp = () => {
+  const handleSignupSendOtp = async () => {
     if (!signupEmail) {
       alert("Please enter a valid email to receive OTP");
       return;
     }
-    alert("OTP sent to your email!");
-    setSignupOtpSent(true);
+    try {
+      const response = await axios.post("https://loginslotsync.onrender.com/api/v1/auth/send-signup-otp", {
+        email: signupEmail,
+      });
+      console.log("Signup OTP Response:", response.data); // Print the response data
+      alert(response.data.message); // Show the response message from API
+      setSignupOtpSent(true);
+    } catch (error) {
+      console.error("Error sending OTP", error);
+      alert("Error sending OTP.");
+    }
   };
 
-  const handleSignupSubmit = (e) => {
+  const handleSignupSubmit = async (e) => {
     e.preventDefault();
     if (signupPassword !== signupRePassword) {
       alert("Passwords do not match!");
@@ -60,14 +90,25 @@ function UserLogin() {
       alert("Please select a gender!");
       return;
     }
-    alert(
-      `Signing up with Name: ${signupName}, Email: ${signupEmail}, Password: ${signupPassword}, OTP: ${signupOtp}, Age: ${signupAge}, Gender: ${signupGender}`
-    );
+    try {
+      const response = await axios.post("https://loginslotsync.onrender.com/api/v1/auth/register", {
+        username: signupName,
+        email: signupEmail,
+        password: signupPassword,
+        otp: signupOtp,
+        age: signupAge,
+        gender: signupGender,
+      });
+      console.log("Signup Response:", response.data); // Print the response data
+      alert(response.data.message); // Show the response message from API
+    } catch (error) {
+      console.error("Signup failed", error);
+      alert("Signup failed: " + error.response?.data?.message);
+    }
   };
 
   return (
     <div className="user-page-container">
-      {/* <h1 className="user-page-logo">SlotSync</h1> */}
       <div className="user-form-wrapper">
         <div className="user-login-container">
           <h2 className="user-login-title">
@@ -221,38 +262,28 @@ function UserLogin() {
                   <option value="Other">Other</option>
                 </select>
               </div>
-              <button type="submit" className="user-login-button">
+              <button type="submit" className="user-signup-button">
                 Sign Up
               </button>
             </form>
           )}
-
-          {/* Links and Buttons */}
-          <div className="user-link-container">
-            <a href="#" className="user-link">
-              Forgot Password?
-            </a>
-          </div>
-          <div className="user-link-container">
-            <p>
-              {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-              <a
-                href="#"
-                className="user-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsLogin(!isLogin);
-                }}
-              >
-                {isLogin ? "Sign Up" : "Login"}
-              </a>
-            </p>
-          </div>
-          <div className="user-link-container">
-            <Link to="/DoctorLogin" className="user-doctor-button">
-              If you are a doctor, login or signup here
-            </Link>
-          </div>
+          <p className="user-toggle">
+            {isLogin ? (
+              <span>
+                Don't have an account?{" "}
+                <span onClick={() => setIsLogin(false)} className="user-toggle-link">
+                  Sign Up
+                </span>
+              </span>
+            ) : (
+              <span>
+                Already have an account?{" "}
+                <span onClick={() => setIsLogin(true)} className="user-toggle-link">
+                  Login
+                </span>
+              </span>
+            )}
+          </p>
         </div>
       </div>
     </div>
