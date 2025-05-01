@@ -125,11 +125,10 @@ function UserLogin() {
                 </div>
               </div>
               <button type="submit" className="user-login-button">
-                <Link to="/home" >Login</Link>
+                Login
               </button>
             </form>
-          ) : (
-            // Signup Form
+          ) : (            // Signup Form
             <form onSubmit={handleSignupSubmit}>
               <div className="user-form-group">
                 <label className="user-form-label">Name</label>
