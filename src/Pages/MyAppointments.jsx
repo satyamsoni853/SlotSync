@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from "../Context/AppContext.jsx";
+
 import { toast } from 'react-toastify';
 import { assets } from '../assets/assets';
 import DoctorImage from '../assets/doc1.png';
