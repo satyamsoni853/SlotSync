@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { AppContext } from "../Context/AppContext";
+import { AppContext } from "../Context/AppContext.jsx";
+
 import { assets } from "../assets/assets";
 import RelatedDoctor from "../Componets/RelatedDoctor";
 // import { FaCheckCircle } from "react-icons/fa";  // Verified Icon

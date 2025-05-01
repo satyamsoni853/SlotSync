@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./UserLogin.css";
-import { Link } from "react-router-dom";
-import axios from "axios"; // Import axios
+import { Link, useNavigate } from "react-router-dom";
 
 function UserLogin() {
   const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
@@ -20,59 +19,33 @@ function UserLogin() {
   const [signupAge, setSignupAge] = useState("");
   const [signupGender, setSignupGender] = useState("");
 
+  const navigate = useNavigate();
+
   // Login form handlers
-  const handleLoginSendOtp = async () => {
-    // Make an API call to send OTP for login
-    try {
-      const response = await axios.post("https://loginslotsync.onrender.com/api/v1/auth/send-login-otp", {
-        email: loginUsername,
-      });
-      console.log("Login OTP Response:", response.data); // Print the response data
-      alert(response.data.message); // Show the response message from API
-      setLoginOtpSent(true);
-    } catch (error) {
-      console.error("Error sending OTP", error);
-      alert("Error sending OTP.");
-    }
+  const handleLoginSendOtp = () => {
+    // Simulate OTP sent without API
+    setLoginOtpSent(true);
+    alert("OTP sent to your email.");
   };
 
-  const handleLoginSubmit = async (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
-    // Make an API call to verify the login credentials
-    try {
-      const response = await axios.post("https://loginslotsync.onrender.com/api/v1/auth/login", {
-        username: loginUsername,
-        password: loginPassword,
-        otp: loginOtp,
-      });
-      console.log("Login Response:", response.data); // Print the response data
-      alert(response.data.message); // Show the response message from API
-    } catch (error) {
-      console.error("Login failed", error);
-      alert("Login failed: " + error.response?.data?.message);
-    }
+    // Redirect to /home on login without passing data
+    navigate("/home");
   };
 
   // Signup form handlers
-  const handleSignupSendOtp = async () => {
+  const handleSignupSendOtp = () => {
     if (!signupEmail) {
       alert("Please enter a valid email to receive OTP");
       return;
     }
-    try {
-      const response = await axios.post("https://loginslotsync.onrender.com/api/v1/auth/send-signup-otp", {
-        email: signupEmail,
-      });
-      console.log("Signup OTP Response:", response.data); // Print the response data
-      alert(response.data.message); // Show the response message from API
-      setSignupOtpSent(true);
-    } catch (error) {
-      console.error("Error sending OTP", error);
-      alert("Error sending OTP.");
-    }
+    // Simulate OTP sent without API
+    setSignupOtpSent(true);
+    alert("OTP sent to your email.");
   };
 
-  const handleSignupSubmit = async (e) => {
+  const handleSignupSubmit = (e) => {
     e.preventDefault();
     if (signupPassword !== signupRePassword) {
       alert("Passwords do not match!");
@@ -90,21 +63,11 @@ function UserLogin() {
       alert("Please select a gender!");
       return;
     }
-    try {
-      const response = await axios.post("https://loginslotsync.onrender.com/api/v1/auth/register", {
-        username: signupName,
-        email: signupEmail,
-        password: signupPassword,
-        otp: signupOtp,
-        age: signupAge,
-        gender: signupGender,
-      });
-      console.log("Signup Response:", response.data); // Print the response data
-      alert(response.data.message); // Show the response message from API
-    } catch (error) {
-      console.error("Signup failed", error);
-      alert("Signup failed: " + error.response?.data?.message);
-    }
+    alert("Sign up successful!");
+  };
+
+  const handleForgotPassword = () => {
+    alert("Forgot Password functionality is not implemented yet.");
   };
 
   return (
@@ -267,7 +230,7 @@ function UserLogin() {
               </button>
             </form>
           )}
-          <p className="user-toggle">
+          <p className="user-toggle text-center">
             {isLogin ? (
               <span>
                 Don't have an account?{" "}
@@ -284,6 +247,20 @@ function UserLogin() {
               </span>
             )}
           </p>
+          <button
+            type="button"
+            className="user-forgot-password-button"
+            onClick={handleForgotPassword}
+          >
+            Forgot Password
+          </button>
+          <button
+            type="button"
+            className="user-doctor-login-button"
+            onClick={() => navigate("/doctorlogin")}
+          >
+            If you are a doctor, click here
+          </button>
         </div>
       </div>
     </div>

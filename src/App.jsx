@@ -14,6 +14,7 @@ import Navbar from "./Componets/Navbar";
 import Footer from "./Componets/Footer";
 import DoctorLogin from "./Componets/DoctorLogin/DoctorLogin";
 import Aichat from "./Componets/AiChat/Aichat";
+import DoctorPage from "./Componets/DoctorPage/DoctorPage";
 
 function App() {
   return <div className="mx-4 sm:mx-[10%]" >
@@ -33,6 +34,7 @@ function App() {
       <Route path="/" element={<UserLogin/>} />
       <Route path="/DoctorLogin" element={<DoctorLogin/>} />
       <Route path="/ai-chat" element={<Aichat/>} />
+      <Route path="/DoctorPage" element={<DoctorPage/>} />
 
 
     </Routes>

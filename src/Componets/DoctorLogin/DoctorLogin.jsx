@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './DoctorLogin.css';
+import { useNavigate } from 'react-router-dom';
 
 function DoctorLogin() {
   const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
@@ -25,6 +26,8 @@ function DoctorLogin() {
   const [signupOtp, setSignupOtp] = useState('');
   const [signupOtpSent, setSignupOtpSent] = useState(false);
 
+  const navigate = useNavigate();
+
   // Login form handlers
   const handleLoginSendOtp = () => {
     alert('OTP sent to your registered email/phone!');
@@ -33,7 +36,8 @@ function DoctorLogin() {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    alert(`Logging in with Username: ${loginUsername}, Password: ${loginPassword}, OTP: ${loginOtp}`);
+    // Redirect to /doctorpage on login without passing data
+    navigate('/doctorpage');
   };
 
   // Signup form handlers
