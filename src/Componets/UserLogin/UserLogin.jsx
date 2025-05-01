@@ -125,7 +125,7 @@ function UserLogin() {
                 </div>
               </div>
               <button type="submit" className="user-login-button">
-                Login
+                <Link to="/home" >Login</Link>
               </button>
             </form>
           ) : (
