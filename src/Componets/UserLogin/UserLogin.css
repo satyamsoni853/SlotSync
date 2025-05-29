@@ -274,3 +274,18 @@ body {
   background-color: #cccccc;
   cursor: not-allowed;
 }
+.user-error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.user-login-button:disabled,
+.user-signup-button:disabled,
+.user-otp-button:disabled,
+.user-forgot-password-button:disabled,
+.user-doctor-login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
