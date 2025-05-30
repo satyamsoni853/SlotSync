@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./UserLogin.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function UserLogin() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
   // Login form states
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -18,274 +18,56 @@ function UserLogin() {
   const [signupOtpSent, setSignupOtpSent] = useState(false);
   const [signupAge, setSignupAge] = useState("");
   const [signupGender, setSignupGender] = useState("");
-  // Common states
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  // Base API URL
-  const API_BASE_URL = "https://auth-system-latest-73y5.onrender.com/api/auth";
-
   // Login form handlers
-  const handleLoginSendOtp = async () => {
-    if (!loginUsername || !loginPassword) {
-      setError("Please enter both username and password");
-      return;
-    }
-    setError("");
-    setLoading(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: loginUsername,
-          password: loginPassword,
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to send OTP");
-      }
-      setLoginOtpSent(true);
-      alert("OTP sent to your email.");
-    } catch (err) {
-      setError(err.message || "An error occurred while sending OTP");
-    } finally {
-      setLoading(false);
-    }
+  const handleLoginSendOtp = () => {
+    // Simulate OTP sent without API
+    setLoginOtpSent(true);
+    alert("OTP sent to your email.");
   };
 
-  const handleLoginSubmit = async (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
-    if (!loginOtpSent) {
-      setError("Please request an OTP first");
-      return;
-    }
-    if (!/^\d{6}$/.test(loginOtp)) {
-      setError("OTP must be a 6-digit number");
-      return;
-    }
-    setError("");
-    setLoading(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/verify-otp`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: loginUsername, // Assuming username is email for OTP verification
-          otp: loginOtp,
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || "OTP verification failed");
-      }
-      alert("Login successful!");
-      navigate("/home");
-    } catch (err) {
-      setError(err.message || "An error occurred during login");
-    } finally {
-      setLoading(false);
-    }
+    // Redirect to /home on login without passing data
+    navigate("/home");
   };
 
   // Signup form handlers
-  const handleSignupSendOtp = async () => {
-    // Validate all required fields
-    if (!signupName) {
-      setError("Please enter your name");
-      return;
-    }
+  const handleSignupSendOtp = () => {
     if (!signupEmail) {
-      setError("Please enter a valid email to receive OTP");
+      alert("Please enter a valid email to receive OTP");
       return;
     }
-    if (!signupPassword) {
-      setError("Please enter a password");
-      return;
-    }
-    if (!signupRePassword) {
-      setError("Please re-enter your password");
-      return;
-    }
-    if (signupPassword !== signupRePassword) {
-      setError("Passwords do not match");
-      return;
-    }
-    if (!signupAge || signupAge < 1 || signupAge > 120) {
-      setError("Please enter a valid age between 1 and 120");
-      return;
-    }
-    if (!signupGender) {
-      setError("Please select a gender");
-      return;
-    }
-
-    setError("");
-    setLoading(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: signupName,
-          email: signupEmail,
-          password: signupPassword,
-          reEnteredPassword: signupRePassword,
-          age: parseInt(signupAge),
-          gender: signupGender.toLowerCase(),
-        }),
-      });
-
-      // Log the raw response to debug the content type and body
-      const contentType = response.headers.get("content-type");
-      console.log("Response status:", response.status);
-      console.log("Content-Type:", contentType);
-
-      // Check if the response is JSON
-      if (contentType && contentType.includes("application/json")) {
-        const data = await response.json();
-        console.log("Parsed JSON data:", data);
-        if (!response.ok) {
-          throw new Error(data.message || "Failed to send OTP");
-        }
-        setSignupOtpSent(true);
-        alert("OTP sent to your email.");
-      } else {
-        // If not JSON, read the response as text and handle accordingly
-        const text = await response.text();
-        console.log("Non-JSON response:", text);
-        if (response.ok && text.toLowerCase().includes("otp sent")) {
-          // Assume success if the response contains "otp sent"
-          setSignupOtpSent(true);
-          alert("OTP sent to your email.");
-        } else {
-          throw new Error(text || "Failed to send OTP - Invalid response format");
-        }
-      }
-    } catch (err) {
-      console.error("Error in handleSignupSendOtp:", err);
-      setError(err.message || "An error occurred while sending OTP");
-    } finally {
-      setLoading(false);
-    }
+    // Simulate OTP sent without API
+    setSignupOtpSent(true);
+    alert("OTP sent to your email.");
   };
 
-  const handleSignupSubmit = async (e) => {
+  const handleSignupSubmit = (e) => {
     e.preventDefault();
     if (signupPassword !== signupRePassword) {
-      setError("Passwords do not match!");
+      alert("Passwords do not match!");
       return;
     }
     if (!/^\d{6}$/.test(signupOtp)) {
-      setError("OTP must be a 6-digit number!");
+      alert("OTP must be a 6-digit number!");
       return;
     }
     if (!signupAge || signupAge < 1 || signupAge > 120) {
-      setError("Please enter a valid age between 1 and 120!");
+      alert("Please enter a valid age between 1 and 120!");
       return;
     }
     if (!signupGender) {
-      setError("Please select a gender!");
+      alert("Please select a gender!");
       return;
     }
-    setError("");
-    setLoading(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/verify-otp`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: signupEmail,
-          otp: signupOtp,
-        }),
-      });
-
-      // Log the raw response to debug the content type and body
-      const contentType = response.headers.get("content-type");
-      console.log("Verify OTP Response status:", response.status);
-      console.log("Verify OTP Content-Type:", contentType);
-
-      // Check if the response is JSON
-      if (contentType && contentType.includes("application/json")) {
-        const data = await response.json();
-        console.log("Verify OTP Parsed JSON data:", data);
-        if (!response.ok) {
-          throw new Error(data.message || "OTP verification failed");
-        }
-        alert("Sign up successful!");
-        setIsLogin(true); // Switch to login form after successful signup
-      } else {
-        // If not JSON, read the response as text and handle accordingly
-        const text = await response.text();
-        console.log("Verify OTP Non-JSON response:", text);
-        if (response.ok && text.toLowerCase().includes("verified")) {
-          // Assume success if the response contains "verified"
-          alert("Sign up successful!");
-          setIsLogin(true);
-        } else {
-          throw new Error(text || "OTP verification failed - Invalid response format");
-        }
-      }
-    } catch (err) {
-      console.error("Error in handleSignupSubmit:", err);
-      setError(err.message || "An error occurred during signup");
-    } finally {
-      setLoading(false);
-    }
+    alert("Sign up successful!");
   };
 
-  const handleResendOtp = async () => {
-    if (!signupEmail) {
-      setError("Please enter an email to resend OTP");
-      return;
-    }
-    setError("");
-    setLoading(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/resend-otp`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: signupEmail }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to resend OTP");
-      }
-      alert("OTP resent to your email.");
-    } catch (err) {
-      setError(err.message || "An error occurred while resending OTP");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleForgotPassword = async () => {
-    const email = prompt("Please enter your email to reset password:");
-    if (!email) {
-      setError("Email is required to reset password");
-      return;
-    }
-    setError("");
-    setLoading(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/resend-otp`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to send reset OTP");
-      }
-      alert("Reset OTP sent to your email.");
-    } catch (err) {
-      setError(err.message || "An error occurred during password reset");
-    } finally {
-      setLoading(false);
-    }
+  const handleForgotPassword = () => {
+    alert("Forgot Password functionality is not implemented yet.");
   };
 
   return (
@@ -295,7 +77,7 @@ function UserLogin() {
           <h2 className="user-login-title">
             {isLogin ? "User-Login" : "User-Sign Up"}
           </h2>
-          {error && <p className="user-error-message">{error}</p>}
+
           {isLogin ? (
             // Login Form
             <form onSubmit={handleLoginSubmit}>
@@ -308,7 +90,6 @@ function UserLogin() {
                   className="user-form-input"
                   placeholder="Enter username"
                   required
-                  disabled={loading}
                 />
               </div>
               <div className="user-form-group">
@@ -320,7 +101,6 @@ function UserLogin() {
                   className="user-form-input"
                   placeholder="Enter password"
                   required
-                  disabled={loading}
                 />
               </div>
               <div className="user-form-group">
@@ -332,29 +112,23 @@ function UserLogin() {
                     onChange={(e) => setLoginOtp(e.target.value)}
                     className="user-form-input"
                     placeholder="Enter OTP"
-                    disabled={!loginOtpSent || loading}
+                    disabled={!loginOtpSent}
                     required
                   />
                   <button
                     type="button"
                     onClick={handleLoginSendOtp}
                     className="user-otp-button"
-                    disabled={loading}
                   >
                     Send OTP
                   </button>
                 </div>
               </div>
-              <button
-                type="submit"
-                className="user-login-button"
-                disabled={loading}
-              >
-                {loading ? "Logging in..." : "Login"}
+              <button type="submit" className="user-login-button">
+                Login
               </button>
             </form>
-          ) : (
-            // Signup Form
+          ) : (            // Signup Form
             <form onSubmit={handleSignupSubmit}>
               <div className="user-form-group">
                 <label className="user-form-label">Name</label>
@@ -365,7 +139,6 @@ function UserLogin() {
                   className="user-form-input"
                   placeholder="Enter your name"
                   required
-                  disabled={loading}
                 />
               </div>
               <div className="user-form-group">
@@ -377,7 +150,6 @@ function UserLogin() {
                   className="user-form-input"
                   placeholder="Enter your email"
                   required
-                  disabled={loading}
                 />
               </div>
               <div className="user-form-group">
@@ -389,7 +161,6 @@ function UserLogin() {
                   className="user-form-input"
                   placeholder="Enter password"
                   required
-                  disabled={loading}
                 />
               </div>
               <div className="user-form-group">
@@ -401,7 +172,6 @@ function UserLogin() {
                   className="user-form-input"
                   placeholder="Re-enter password"
                   required
-                  disabled={loading}
                 />
               </div>
               <div className="user-form-group">
@@ -413,27 +183,16 @@ function UserLogin() {
                     onChange={(e) => setSignupOtp(e.target.value)}
                     className="user-form-input"
                     placeholder="Enter 6-digit OTP"
-                    disabled={!signupOtpSent || loading}
+                    disabled={!signupOtpSent}
                     required
                   />
                   <button
                     type="button"
                     onClick={handleSignupSendOtp}
                     className="user-otp-button"
-                    disabled={loading}
                   >
                     Send OTP
                   </button>
-                  {signupOtpSent && (
-                    <button
-                      type="button"
-                      onClick={handleResendOtp}
-                      className="user-otp-button"
-                      disabled={loading}
-                    >
-                      Resend OTP
-                    </button>
-                  )}
                 </div>
               </div>
               <div className="user-form-group">
@@ -447,7 +206,6 @@ function UserLogin() {
                   min="1"
                   max="120"
                   required
-                  disabled={loading}
                 />
               </div>
               <div className="user-form-group">
@@ -457,7 +215,6 @@ function UserLogin() {
                   onChange={(e) => setSignupGender(e.target.value)}
                   className="user-form-input"
                   required
-                  disabled={loading}
                 >
                   <option value="" disabled>
                     Select gender
@@ -467,12 +224,8 @@ function UserLogin() {
                   <option value="Other">Other</option>
                 </select>
               </div>
-              <button
-                type="submit"
-                className="user-signup-button"
-                disabled={loading}
-              >
-                {loading ? "Signing up..." : "Sign Up"}
+              <button type="submit" className="user-signup-button">
+                Sign Up
               </button>
             </form>
           )}
@@ -480,20 +233,14 @@ function UserLogin() {
             {isLogin ? (
               <span>
                 Don't have an account?{" "}
-                <span
-                  onClick={() => setIsLogin(false)}
-                  className="user-toggle-link"
-                >
+                <span onClick={() => setIsLogin(false)} className="user-toggle-link">
                   Sign Up
                 </span>
               </span>
             ) : (
               <span>
                 Already have an account?{" "}
-                <span
-                  onClick={() => setIsLogin(true)}
-                  className="user-toggle-link"
-                >
+                <span onClick={() => setIsLogin(true)} className="user-toggle-link">
                   Login
                 </span>
               </span>
@@ -503,7 +250,6 @@ function UserLogin() {
             type="button"
             className="user-forgot-password-button"
             onClick={handleForgotPassword}
-            disabled={loading}
           >
             Forgot Password
           </button>
@@ -511,7 +257,6 @@ function UserLogin() {
             type="button"
             className="user-doctor-login-button"
             onClick={() => navigate("/doctorlogin")}
-            disabled={loading}
           >
             If you are a doctor, click here
           </button>
