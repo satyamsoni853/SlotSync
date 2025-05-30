@@ -93,10 +93,36 @@ function UserLogin() {
 
   // Signup form handlers
   const handleSignupSendOtp = async () => {
+    // Validate all required fields
+    if (!signupName) {
+      setError("Please enter your name");
+      return;
+    }
     if (!signupEmail) {
       setError("Please enter a valid email to receive OTP");
       return;
     }
+    if (!signupPassword) {
+      setError("Please enter a password");
+      return;
+    }
+    if (!signupRePassword) {
+      setError("Please re-enter your password");
+      return;
+    }
+    if (signupPassword !== signupRePassword) {
+      setError("Passwords do not match");
+      return;
+    }
+    if (!signupAge || signupAge < 1 || signupAge > 120) {
+      setError("Please enter a valid age between 1 and 120");
+      return;
+    }
+    if (!signupGender) {
+      setError("Please select a gender");
+      return;
+    }
+
     setError("");
     setLoading(true);
     try {
@@ -107,17 +133,40 @@ function UserLogin() {
           name: signupName,
           email: signupEmail,
           password: signupPassword,
+          reEnteredPassword: signupRePassword,
           age: parseInt(signupAge),
-          gender: signupGender,
+          gender: signupGender.toLowerCase(),
         }),
       });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to send OTP");
+
+      // Log the raw response to debug the content type and body
+      const contentType = response.headers.get("content-type");
+      console.log("Response status:", response.status);
+      console.log("Content-Type:", contentType);
+
+      // Check if the response is JSON
+      if (contentType && contentType.includes("application/json")) {
+        const data = await response.json();
+        console.log("Parsed JSON data:", data);
+        if (!response.ok) {
+          throw new Error(data.message || "Failed to send OTP");
+        }
+        setSignupOtpSent(true);
+        alert("OTP sent to your email.");
+      } else {
+        // If not JSON, read the response as text and handle accordingly
+        const text = await response.text();
+        console.log("Non-JSON response:", text);
+        if (response.ok && text.toLowerCase().includes("otp sent")) {
+          // Assume success if the response contains "otp sent"
+          setSignupOtpSent(true);
+          alert("OTP sent to your email.");
+        } else {
+          throw new Error(text || "Failed to send OTP - Invalid response format");
+        }
       }
-      setSignupOtpSent(true);
-      alert("OTP sent to your email.");
     } catch (err) {
+      console.error("Error in handleSignupSendOtp:", err);
       setError(err.message || "An error occurred while sending OTP");
     } finally {
       setLoading(false);
@@ -153,13 +202,35 @@ function UserLogin() {
           otp: signupOtp,
         }),
       });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || "OTP verification failed");
+
+      // Log the raw response to debug the content type and body
+      const contentType = response.headers.get("content-type");
+      console.log("Verify OTP Response status:", response.status);
+      console.log("Verify OTP Content-Type:", contentType);
+
+      // Check if the response is JSON
+      if (contentType && contentType.includes("application/json")) {
+        const data = await response.json();
+        console.log("Verify OTP Parsed JSON data:", data);
+        if (!response.ok) {
+          throw new Error(data.message || "OTP verification failed");
+        }
+        alert("Sign up successful!");
+        setIsLogin(true); // Switch to login form after successful signup
+      } else {
+        // If not JSON, read the response as text and handle accordingly
+        const text = await response.text();
+        console.log("Verify OTP Non-JSON response:", text);
+        if (response.ok && text.toLowerCase().includes("verified")) {
+          // Assume success if the response contains "verified"
+          alert("Sign up successful!");
+          setIsLogin(true);
+        } else {
+          throw new Error(text || "OTP verification failed - Invalid response format");
+        }
       }
-      alert("Sign up successful!");
-      setIsLogin(true); // Switch to login form after successful signup
     } catch (err) {
+      console.error("Error in handleSignupSubmit:", err);
       setError(err.message || "An error occurred during signup");
     } finally {
       setLoading(false);
